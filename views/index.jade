@@ -1,0 +1,73 @@
+doctype html
+html
+    head(lang='en')
+        meta(charset='UTF-8')
+        title MusNote
+        style.
+            body {
+                font-size: 100%;
+                font-family: "Calibri", Georgia, Serif;
+            }
+
+            .divclass {
+                margin-left: 10px;
+                padding: 15px;
+            }
+
+            .logininput {
+                width: auto;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+
+            .headers {
+                margin-top: 20px;
+                margin-bottom: 20px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                font-size: large;
+            }
+
+            .but {
+                margin-bottom: 7.5px;
+            }
+    body
+        p1.headers LOG IN
+        br
+        #loginpost.divclass
+            form(action='/login', method='post')
+                p2 User Name:
+                br
+                input.logininput(name='user', value='')
+                br
+                p2 Password:
+                br
+                input.logininput(name='password', type='password', value='')
+                br
+                button.but Log In
+                br
+                p1!=loginmessage
+        hr
+        p1.headers SIGN UP
+        br
+        #adduserpost.divclass
+            form(action='/addUser', method='post')
+                p2 User Name:
+                br
+                input.logininput(name='adduser', value='')
+                br
+                p2 E-mail:
+                br
+                input.logininput(name='addemail', value='')
+                br
+                p2 Password:
+                br
+                input.logininput(name='addpassword', type='password', value='')
+                br
+                button.but Sign Up
+                br
+                p1!=signupmessage
+        br
+                             
