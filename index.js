@@ -102,7 +102,7 @@ app.post('/login', function (req, res) {
 		if(req.session.admin == true){
 			findall();
 			/*sendgrid.send({
-			to:       'mgords@gmail.com',
+			to:       'x@x.com',
   			from:     'mus@mus.com',
   			subject:  'Hello World',
   			text:     'Selam baba' + req.session.user
@@ -193,6 +193,7 @@ app.post('/delete', function (req, res) {
   	delete req.session.password;
 	delete req.session.email;
  	delete req.session.admin;
+ 	delete req.session.notes;
 	res.redirect('/');
 });
 app.post('/deletebyname', function (req, res) {
