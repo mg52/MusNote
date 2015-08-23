@@ -25,7 +25,7 @@ var UserSchema = new mongoose.Schema({
   	notes: String
 });
 var User = mongoose.model('User', UserSchema);
-module.exports = User;
+//module.exports = User;
 
 var expressSession = require('express-session');
 app.use(expressSession({secret:'musSecret'}));
