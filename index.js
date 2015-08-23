@@ -13,8 +13,6 @@ app.use(bodyParser.urlencoded({
 })); 
 
 var mongoose = require('mongoose');
-/*var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://user:password@ds027483.mongolab.com:27483/heroku_31dfrws9';*/
-//var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/mushost';
 var uristring = process.env.MONGOLAB_URI;
 mongoose.connect(uristring);
 var UserSchema = new mongoose.Schema({
