@@ -83,11 +83,12 @@ app.get('/admin', function (req, res) {
 		res.redirect('/');
 });
 app.post('/login', function (req, res) {
-  	delete req.session.user;
+  	/*delete req.session.user;
   	delete req.session.password;
 	delete req.session.email;
   	delete req.session.admin;
-	delete req.session.notes;
+	delete req.session.notes;*/
+	req.session.destroy();
   	var post = req.body;
   	User.findOne({ 'username': post.user }, function(err, user) {
   if (err) throw err;
@@ -189,11 +190,12 @@ app.post('/delete', function (req, res) {
   if (err) throw err;
   console.log(deleted_user + ' deleted!');
 });
-  	delete req.session.user;
+  	/*delete req.session.user;
   	delete req.session.password;
 	delete req.session.email;
  	delete req.session.admin;
- 	delete req.session.notes;
+ 	delete req.session.notes;*/
+ 	req.session.destroy();
 	res.redirect('/');
 });
 app.post('/deletebyname', function (req, res) {
@@ -214,11 +216,12 @@ app.post('/deletebyname', function (req, res) {
   
 });
 app.post('/logout', function (req, res) {
-  	delete req.session.user;
+  	/*delete req.session.user;
   	delete req.session.password;
 	delete req.session.email;
   	delete req.session.admin;
-	delete req.session.notes;
+	delete req.session.notes;*/
+	req.session.destroy();
   	res.redirect('/');
 });  
 function findall(){
