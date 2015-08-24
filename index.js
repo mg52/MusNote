@@ -83,11 +83,11 @@ app.get('/admin', function (req, res) {
 		res.redirect('/');
 });
 app.post('/login', function (req, res) {
-  	//delete req.session.user;
-  	//delete req.session.password;
-	//delete req.session.email;
-  	//delete req.session.admin;
-	//delete req.session.notes;
+  	delete req.session.user;
+  	delete req.session.password;
+	delete req.session.email;
+  	delete req.session.admin;
+	delete req.session.notes;
   	var post = req.body;
   	User.findOne({ 'username': post.user }, function(err, user) {
   if (err) throw err;
