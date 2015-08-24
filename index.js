@@ -88,7 +88,7 @@ app.post('/login', function (req, res) {
 	delete req.session.email;
   	delete req.session.admin;
 	delete req.session.notes;*/
-	if(req.session) req.session = null;
+	delete req.session;
   	var post = req.body;
   	User.findOne({ 'username': post.user }, function(err, user) {
   if (err) throw err;
@@ -195,7 +195,7 @@ app.post('/delete', function (req, res) {
 	delete req.session.email;
  	delete req.session.admin;
  	delete req.session.notes;*/
- 	req.session = null;
+ 	delete req.session;
 	res.redirect('/');
 });
 app.post('/deletebyname', function (req, res) {
@@ -221,7 +221,7 @@ app.post('/logout', function (req, res) {
 	delete req.session.email;
   	delete req.session.admin;
 	delete req.session.notes;*/
-	req.session = null;
+	delete req.session;
   	res.redirect('/');
 });  
 function findall(){
