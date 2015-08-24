@@ -88,7 +88,7 @@ app.post('/login', function (req, res) {
 	delete req.session.email;
   	delete req.session.admin;
 	delete req.session.notes;*/
-	req.session = null;
+	if(req.session) req.session = null;
   	var post = req.body;
   	User.findOne({ 'username': post.user }, function(err, user) {
   if (err) throw err;
