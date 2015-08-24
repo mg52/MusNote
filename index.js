@@ -38,7 +38,7 @@ var deleteduser = '';
 var sendusers = new String;
 
 app.get('/', function (req, res) {
-	req.session.reset();
+	if(req.session)	req.session.reset();
 	if(req.session.user){
 	if(!req.session.admin)
 		res.redirect('/login');
