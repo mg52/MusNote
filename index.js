@@ -206,5 +206,8 @@ app.post('/logout', function (req, res) {
   	res.redirect('/');
 });
 
+app.all('*', function(req, res){
+	res.redirect('/');
+});
 var server = app.listen(port);
 console.log("Working!");
