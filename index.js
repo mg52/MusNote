@@ -18,7 +18,7 @@ app.use(expressSession({secret:'MusSecret'}));
 app.use(bodyParser());
 
 var mongoose = require('mongoose');
-var uristring = process.env.MONGOLAB_URI;
+var uristring = process.env.MONGOLAB_URI || 'mongodb://localhost/musnote_a';
 mongoose.connect(uristring);
 var UserSchema = new mongoose.Schema({
 	username: { type: String, required: true, unique: true },
@@ -156,7 +156,7 @@ app.post('/passwordChanged', function(req, res){
 		password: req.session.password,
 		email: req.session.email,
 		notes: req.session.notes,
-		saved: "Your password has been changed sucessfully!"
+		changePasswordMessage: "Your password has been changed sucessfully!"
 	});
 });
 app.post('/sendNote', function(req, res){
