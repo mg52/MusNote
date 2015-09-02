@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>MusNote</title>
+    <style>
+      body {
+          font-size: 100%;
+          font-family: "Calibri", Georgia, Serif;
+      }
+      .divclass {
+          margin-left: 10px;
+          padding: 15px;
+      }
+      .logininput {
+          width: auto;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          margin-top: 5px;
+          margin-bottom: 5px;
+      }
+      .headers {
+          margin-top: 20px;
+          margin-bottom: 20px;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          font-size: large;
+      }
+      .but {
+          margin-bottom: 7.5px;
+      }
+    </style>
+  </head>
+  <body>
+    <p1 class="headers">LOG IN</p1><br>
+    <div id="loginpost" class="divclass">
+      <form action="/login" method="post">
+        <p2>User Name:</p2><br>
+        <input name="user" value="" class="logininput"><br>
+        <p2>Password:</p2><br>
+        <input name="password" type="password" value="" class="logininput"><br>
+        <button class="but">Log In</button><br>
+        <p1>{{loginmessage}}</p1>
+      </form>
+    </div>
+    <hr>
+    <p1 class="headers">SIGN UP</p1><br>
+    <div id="adduserpost" class="divclass">
+      <form action="/addUser" method="post">
+        <p2>User Name:</p2><br>
+        <input name="adduser" value="" class="logininput"><br>
+        <p2>E-mail:</p2><br>
+        <input name="addemail" type="email" value="" class="logininput"><br>
+        <p2>Password:</p2><br>
+        <input name="addpassword" type="password" value="" class="logininput"><br>
+        <button class="but">Sign Up</button><br>
+        <p1>{{signupmessage}}</p1>
+      </form>
+    </div><br>
+  </body>
+</html>
