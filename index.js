@@ -131,7 +131,10 @@ app.get('/badUserLogIn', function (req, res) {
 	res.render('index', { loginmessage: "Bad Username or Password"});
 });
 app.get('/changePassword', function (req, res) {
-	res.render('changePassword');
+	if(req.session.user)
+		res.render('changePassword');
+	else
+		res.redirect('/');
 });
 app.post('/changePassword', function (req, res){
 	if(req.session.user){
