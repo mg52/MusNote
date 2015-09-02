@@ -1,6 +1,6 @@
 /*
-mg52 - Mus
-*/
+ mg52 - Mus
+ */
 var port = process.env.PORT || 5000;
 var express = require('express');
 var expressSession = require('express-session');
@@ -24,7 +24,7 @@ var UserSchema = new mongoose.Schema({
 	username: { type: String, required: true, unique: true },
 	password: { type: String, required: true },
 	email: {type: String, required: true},
-  	notes: String
+	notes: String
 });
 var User = mongoose.model('User', UserSchema);
 
@@ -39,35 +39,35 @@ app.get('/', function (req, res) {
 app.get('/login', function (req, res) {
 	if(req.session.user)
 		res.render('login', { loginmessage: req.session.user + " !",
-		username: req.session.user,
-		password: req.session.password,
-		email: req.session.email,
-		notes: req.session.notes});
+			username: req.session.user,
+			password: req.session.password,
+			email: req.session.email,
+			notes: req.session.notes});
 	else
 		res.redirect('/');
 });
 
 app.post('/login', function (req, res) {
-  	delete req.session.user;
-  	delete req.session.password;
+	delete req.session.user;
+	delete req.session.password;
 	delete req.session.email;
 	delete req.session.notes;
-  	var post = req.body;
-  	User.findOne({ 'username': post.user }, function(err, user) {
-  if (err) throw err;
-  if(user){
-	if(post.password == user.password){
-		req.session.user = user.username;
-		req.session.password = user.password;
-		req.session.email = user.email;
-		req.session.notes = user.notes;
-		console.log(req.session.user + " logged in.");
-		res.redirect('/login');
-	}
-	else res.redirect('/badUserLogIn');
-  }
-  else res.redirect('/badUserLogIn');
-});
+	var post = req.body;
+	User.findOne({ 'username': post.user }, function(err, user) {
+		if (err) throw err;
+		if(user){
+			if(post.password == user.password){
+				req.session.user = user.username;
+				req.session.password = user.password;
+				req.session.email = user.email;
+				req.session.notes = user.notes;
+				console.log(req.session.user + " logged in.");
+				res.redirect('/login');
+			}
+			else res.render('index', { loginmessage: "Bad Username or Password"});
+		}
+		else res.render('index', { loginmessage: "Bad Username or Password"});
+	});
 });
 app.post('/addNote', function (req,res) {
 	var post = req.body;
@@ -94,42 +94,35 @@ app.post('/addNote', function (req,res) {
 	else
 		res.redirect('/');
 });
-app.get('/addUser', function (req, res) {
-	if(req.session.user)
-		res.render('index', { signupmessage: req.session.user + " added!"});
-	else
-		res.render('index');
-});
 
 app.post('/addUser', function (req, res) {
-  	var post = req.body;
-  	req.session.user = post.adduser;
-  	req.session.password = post.addpassword;
+	var post = req.body;
+	req.session.user = post.adduser;
+	req.session.password = post.addpassword;
 	req.session.email = post.addemail;
 	req.session.notes = "";
-  	var new_user = new User({
-  	username: req.session.user,
-  	password: req.session.password,
-	email: req.session.email,
-	notes: req.session.notes
-});
+	var new_user = new User({
+		username: req.session.user,
+		password: req.session.password,
+		email: req.session.email,
+		notes: req.session.notes
+	});
 	new_user.save(function (err, new_user) {
-            if (err) {
-				res.redirect('/badUserSignUp');
-				console.log(req.session.user + " is using by someone else!")
-			}
-			else{
-				res.redirect('/addUser');
+		if (err) {
+			res.render('index', { signupmessage: "This username is using by someone else!"});
+			console.log(req.session.user + " is using by someone else!")
+		}
+		else{
+			if(req.session.user) {
+				res.render('index', {signupmessage: req.session.user + " added!"});
 				console.log(req.session.user + " " + req.session.password + ' User saved successfully!');
 			}
-        });
+			else
+				res.redirect('/');
+		}
+	});
 });
-app.get('/badUserSignUp', function (req, res) {
-	res.render('index', { signupmessage: "This username is using by someone else!"});
-});
-app.get('/badUserLogIn', function (req, res) {
-	res.render('index', { loginmessage: "Bad Username or Password"});
-});
+
 app.get('/changePassword', function (req, res) {
 	if(req.session.user)
 		res.render('changePassword');
@@ -147,12 +140,12 @@ app.post('/passwordChanged', function(req, res){
 	var post = req.body;
 	User.findOne({ 'username': req.session.user }, function(err, user) {
 		if (err) throw err;
-	 	user.password = post.password;
+		user.password = post.password;
 		user.save(function(err) {
 			if (err) throw err;
 			console.log("New Password Saved.");
 		});
-	 });
+	});
 	res.render('login', {
 		loginmessage: req.session.user + " !",
 		username: req.session.user,
@@ -169,9 +162,9 @@ app.post('/sendNote', function(req, res){
 			from:     'no-reply@musnote.com',
 			subject:  'Your Note',
 			text:     req.session.notes
-			}, function(err, json) {
-				if (err) throw err;
-				console.log(json);
+		}, function(err, json) {
+			if (err) throw err;
+			console.log(json);
 		});
 		res.render('login', {
 			loginmessage: req.session.user + " !",
@@ -186,24 +179,24 @@ app.post('/sendNote', function(req, res){
 		res.redirect('/');
 });
 app.post('/delete', function (req, res) {
-  var deleted_user = req.session.user;
-  User.findOneAndRemove({ username: req.session.user }, function(err) {
-  if (err) throw err;
-  console.log(deleted_user + ' deleted!');
-});
-  	delete req.session.user;
-  	delete req.session.password;
+	var deleted_user = req.session.user;
+	User.findOneAndRemove({ username: req.session.user }, function(err) {
+		if (err) throw err;
+		console.log(deleted_user + ' deleted!');
+	});
+	delete req.session.user;
+	delete req.session.password;
 	delete req.session.email;
- 	delete req.session.notes;
+	delete req.session.notes;
 	res.redirect('/');
 });
 
 app.post('/logout', function (req, res) {
-  	delete req.session.user;
-  	delete req.session.password;
+	delete req.session.user;
+	delete req.session.password;
 	delete req.session.email;
 	delete req.session.notes;
-  	res.redirect('/');
+	res.redirect('/');
 });
 
 app.all('*', function(req, res){
