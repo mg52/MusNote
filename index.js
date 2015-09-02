@@ -18,7 +18,7 @@ app.use(expressSession({secret:'MusSecret'}));
 app.use(bodyParser());
 
 var mongoose = require('mongoose');
-var uristring = process.env.MONGOLAB_URI || 'mongodb://localhost/musnote_a';
+var uristring = process.env.MONGOLAB_URI;
 mongoose.connect(uristring);
 var UserSchema = new mongoose.Schema({
 	username: { type: String, required: true, unique: true },
