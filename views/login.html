@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>MusNote</title>
+    <style>
+      body {
+          font-size: 100%;
+          font-family: "Calibri", Georgia, Serif;
+      }
+      .divclass {
+          margin-left: 10px;
+          padding: 15px;
+      }
+      .headers {
+          margin-top: 20px;
+          margin-bottom: 20px;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          font-size: large;
+      }
+      .but {
+          margin-bottom: 7.5px;
+          margin-left: auto;
+      }
+      textarea.note {
+          color: blue;
+          font-size: 150%;
+          width: 600px;
+          height: 250px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          margin-top: 5px;
+          margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <p1 class="headers">Welcome </p1>
+    <p1 class="headers">{{loginmessage}}</p1>
+    <hr>
+    <div id="information" class="divclass">
+      <p1>Username: </p1>
+      <p1>{{username}}</p1><br>
+      <p1>E-mail: </p1>
+      <p1>{{email}}</p1><br>
+    </div>
+    <hr>
+    <div>
+      <p1>Your Note:</p1><br>
+      <form action="/addNote" method="post">
+        <textarea id="inputnote" name="sendnote" placeholder="Enter Your Note Here" rows="4" cols="50" class="note">{{notes}}</textarea><br>
+        <button id="sendbutton" class="but">Save Note</button>
+        <p1>{{saved}}</p1>
+      </form>
+    </div>
+    <hr>
+    <form action="/changePassword" method="post">
+        <button class="but">Change Password</button>
+    </form>
+    <form action="/sendNote" method="post">
+        <button class="but">Send Note to Your Email</button>
+        <p1>{{sendNoteMessage}}</p1>
+    </form>
+    <form action="/delete" method="post">
+      <button class="but">Delete User</button>
+    </form>
+    <form action="/logout" method="post">
+      <button class="but">Log Out</button>
+    </form>
+  </body>
+</html>
