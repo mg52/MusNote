@@ -160,7 +160,7 @@ app.post('/sendNote', function(req, res){
 		sendgrid.send({
 			to:       req.session.email,
 			from:     'no-reply@musnote.com',
-			subject:  'Your Note',
+			subject:  'Your MusNote',
 			text:     req.session.notes
 		}, function(err, json) {
 			if (err) throw err;
