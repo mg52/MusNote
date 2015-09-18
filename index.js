@@ -109,6 +109,10 @@ app.post('/addUser', function (req, res) {
 	});
 	new_user.save(function (err, new_user) {
 		if (err) {
+			delete req.session.user;
+			delete req.session.password;
+			delete req.session.email;
+			delete req.session.notes;
 			res.render('index', { signupmessage: "This username is using by someone else!"});
 			console.log(req.session.user + " is using by someone else!")
 		}
