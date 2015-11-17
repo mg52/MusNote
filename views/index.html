@@ -117,7 +117,7 @@ body {
 	<p1>Login</p1><br>
   <form action="/login" method="post">
     <input type="text" name="user" placeholder="Username">
-    <input type="password" name="pass" placeholder="Password">
+    <input type="password" name="password" placeholder="Password">
     <input type="submit" name="login" class="login login-submit" value="Login">
 	<p1>{{loginmessage}}</p1>
   </form>
@@ -126,9 +126,9 @@ body {
   <div id="adduserpost">
   <p1>Sign Up</p1><br>
   <form action="/addUser" method="post">
-    <input type="text" name="user" placeholder="Username">
-	<input type="email" name="email" placeholder="Email">
-    <input type="password" name="pass" placeholder="Password">
+    <input type="text" name="adduser" placeholder="Username">
+	<input type="email" name="addemail" placeholder="Email">
+    <input type="password" name="addpassword" placeholder="Password">
     <input type="submit" name="login" class="login login-submit" value="Sign Up">
 	<p1>{{signupmessage}}</p1>
   </form>
