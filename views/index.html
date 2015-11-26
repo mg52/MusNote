@@ -7,6 +7,7 @@
 		<style>
 		@import url(http://fonts.googleapis.com/css?family=Roboto:400,100);
 body {
+    background: url(https://dl.dropboxusercontent.com/u/23299152/Wallpapers/wallpaper-22705.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -15,7 +16,7 @@ body {
 }
 .login-card {
   padding: 40px;
-  width: 30%;
+  width: 25%;
   background-color: #F7F7F7;
   margin: 0 auto 10px;
   border-radius: 2px;
@@ -25,12 +26,12 @@ body {
 .login-card h1 {
   font-weight: 100;
   text-align: center;
-  font-size: 2.3em;
+  font-size: 1.9em;
 }
 .login-card p1 {
   font-weight: 100;
   text-align: center;
-  font-size: 1.7em;
+  font-size: 1.3em;
 }
 .login-card input[type=submit] {
   width: 100%;
@@ -40,7 +41,7 @@ body {
 }
 .login-card input[type=text], input[type=password], input[type=email] {
   height: 2em;
-  font-size: 1.5em;
+  font-size: 1.2em;
   width: 100%;
   margin-bottom: 10px;
   -webkit-appearance: none;
@@ -63,7 +64,7 @@ body {
 }
 .login {
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   height: 1.5em;
@@ -75,16 +76,16 @@ body {
 .login-submit {
   /* border: 1px solid #3079ed; */
   border: 0px;
-  color: #fff;
+  color: #eee;
   text-shadow: 0 1px rgba(0,0,0,0.1);
-  background-color: #4d90fe;
+  background-color: #e65b00;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
 }
 .login-submit:hover {
   /* border: 1px solid #2f5bb7; */
   border: 0px;
   text-shadow: 0 1px rgba(0,0,0,0.3);
-  background-color: #357ae8;
+  background-color: #b34700;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 .login-card a {
@@ -100,7 +101,7 @@ body {
   opacity: 1;
 }
 .login-help {
-  width: 100%;
+  width: 25%;
   text-align: center;
   font-size: 12px;
 }
@@ -113,7 +114,6 @@ body {
     <div class="login-card">
     <h1>MusNote</h1><br>
 	<div id="loginpost">
-	<p1>Login</p1><br>
   <form action="/login" method="post">
     <input type="text" name="user" placeholder="Username">
     <input type="password" name="password" placeholder="Password">
@@ -122,20 +122,11 @@ body {
   </form>
   </div>
   <br>
-  <div id="adduserpost">
-  <p1>Sign Up</p1><br>
-  <form action="/addUser" method="post">
-    <input type="text" name="adduser" placeholder="Username">
-	<input type="email" name="addemail" placeholder="Email">
-    <input type="password" name="addpassword" placeholder="Password">
-    <input type="submit" name="login" class="login login-submit" value="Sign Up">
-	<p1>{{signupmessage}}</p1>
-  </form>
+  <div class="login-help">
+      <form action="/signup" method="post">
+        <input type="submit" class="login login-submit" value="Register">
+      </form>
   </div>
-  <br>
-  <!--<div class="login-help">
-    <a href="#">Register</a> • <a href="#">Forgot Password</a>
-  </div>-->
 </div>
 
   </body>
