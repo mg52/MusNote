@@ -69,6 +69,12 @@ app.post('/login', function (req, res) {
 		else res.render('index', { loginmessage: "Bad Username or Password"});
 	});
 });
+app.post('/signup', function (req,res){
+	if(req.session.user)
+		res.redirect('/login');
+	else
+		res.render('signup');
+});
 app.post('/addNote', function (req,res) {
 	var post = req.body;
 	if(req.session.user) {
@@ -113,12 +119,12 @@ app.post('/addUser', function (req, res) {
 			delete req.session.password;
 			delete req.session.email;
 			delete req.session.notes;
-			res.render('index', { signupmessage: "This username is using by someone else!"});
+			res.render('index', { loginmessage: "This username is using by someone else!"});
 			console.log(req.session.user + " is using by someone else!")
 		}
 		else{
 			if(req.session.user) {
-				res.render('index', {signupmessage: req.session.user + " added!"});
+				res.render('index', {loginmessage: req.session.user + " added!"});
 				console.log(req.session.user + " " + req.session.password + ' User saved successfully!');
 			}
 			else
